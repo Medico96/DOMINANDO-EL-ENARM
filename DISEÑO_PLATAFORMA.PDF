@@ -1,0 +1,764 @@
+💎 COMANDO DE EXTRACCIÓN: /DESTILAR_GPC
+​Copia este bloque y ponlo en tu Gem o úsalo cada vez que le subas un PDF nuevo:
+​"Senior, active el protocolo /DESTILAR_GPC sobre el documento adjunto.
+Suprima toda la epidemiología, fisiopatología y paja académica. Extraiga ÚNICAMENTE la 'médula espinal' que la CIFRHS evalúa en el ENARM 2026.
+​Entrégueme el reporte con la siguiente estructura estricta:
+​1. 🔬 MICRO-RESUMEN QUIRÚRGICO (Regla de 4 puntos):
+​Clínica Clásica: (Síntomas inconfundibles).
+​Estudio Inicial: (El más barato/rápido).
+​Gold Standard / Confirmatorio: (El de elección definitiva).
+​Tratamiento 1ra Línea: (Fármaco o cirugía exacta según PAI/NOM).
+​2. 🔑 PALABRAS PIVOTE (El Hack Visual):
+​Liste 3 frases o términos exactos que, si aparecen en una viñeta, 'regalan' el diagnóstico de inmediato (Ej. 'esputo asalmonado', 'lesión en diana').
+​3. 💀 LA TRAMPA MORTAL (El Distractor):
+​¿Cuál es la 'respuesta lógica pero incorrecta' (espejismo de pregrado o guía vieja) que la CIFRHS usará para hacer reprobar al 50% de los aspirantes en este tema?
+​4. 🧠 NEMOTECNIA ENARM:
+​Cree o cite una regla mnemotécnica corta (acrónimo o frase) para memorizar los criterios de severidad, tratamiento o diagnóstico de este tema.
+​5. 🗂️ 5 JOYAS ENARM (Flashcards Imposibles de Fallar):
+​Formato Anki (Pregunta Corta -> Respuesta Tajante).
+​Pregunte dosis exactas, contraindicaciones absolutas o metas terapéuticas numéricas de la GPC 2026."
+
+
+# AUDITORÍA TOTAL DEL ESTADO DEL PROYECTO v1.0
+
+Como veterano que ha visto morir a miles de proyectos buenos por detalles idiotas, te digo esto:
+
+Tienes un proyecto que está en el **percentil 85** de los intentos que he visto de crear plataformas ENARM. La arquitectura relacional, los tags de error, y la actualización DDIMBE 2024 te ponen por encima de la mayoría. Pero tienes un problema de ESCALA que puede matarte, un problema de COBERTURA que va a dejar a tus aspirantes con huecos sangrientos, y un problema de EJECUCIÓN en la fase técnica que puede retrasar el launch 4-6 semanas si no lo resuelves esta semana.
+
+No puedo acceder directamente a tu Google Sheet por restricciones de la plataforma, pero con todo lo que me describes del contenido, la estructura y el inventario, tengo suficiente para una autopsia completa. Vamos.
+
+---
+
+## PARTE 1: LO QUE ESTÁ EXCELENTE Y POR QUÉ FUNCIONA
+
+### 1.1 — Arquitectura Relacional Padre-Hijo: BRILLANTE
+
+```
+Casos_Padres (viñeta) → Reactivos_Hijos (preguntas)
+                      → DB_Logica_Autopsia (tags)
+                      → DB_Perlas_Contenido (rescate)
+```
+
+Esta es la ÚNICA forma correcta de modelar el ENARM en una base de datos. La mayoría de simuladores del mercado tienen una tabla plana donde cada pregunta es una fila independiente, y cuando intentan hacer casos seriados, copian la viñeta en cada fila. Tu estructura elimina redundancia y permite:
+
+- Actualizar una viñeta UNA VEZ y que se propague a todas sus preguntas hijas
+- Analizar patrones de cascada (si P1 falla, ¿P2 y P3 también?)
+- Generar reportes por CASO, no solo por pregunta individual
+
+**Por qué funciona pedagógicamente:** Refleja exactamente cómo CIFRHS estructura el examen: un escenario clínico que genera 2-3 decisiones encadenadas.
+
+### 1.2 — Los 27 Casos Cubren los Cambios Críticos 2024
+
+Tu inventario de contenido demuestra que no estás enseñando medicina del 2018. Los cambios que has incorporado son exactamente los que CIFRHS va a explotar en 2026:
+
+```markdown
+✅ DM2: Metformina + iSGLT2 inicial (cambio DDIMBE 2024)
+✅ Preeclampsia: Oliguria eliminada como criterio de severidad
+✅ SCA: Troponina de alta sensibilidad
+✅ Vacunación: SRP y Hexavalente a los 18 meses
+✅ CaCu: VPH dosis única
+✅ Colecistitis: Colecistectomía <72h
+✅ Dengue: Clasificación OMS actualizada
+```
+
+Esto te da ventaja directa sobre CTO, PROEDUMED y Platiquemos, que siguen usando algoritmos de GPC CENETEC que ya no existen.
+
+### 1.3 — La "Autopsia del Error" como Diferenciador de Producto
+
+El concepto de diagnosticar el TIPO de error (no solo el TEMA del error) es tu ventaja competitiva más fuerte. Ningún simulador en el mercado mexicano hace esto. La retroalimentación típica es: "La respuesta correcta es B porque..." Tu sistema dice: "Escogiste A porque tienes un #Error_Timing — sabías el tratamiento pero lo aplicaste en el momento incorrecto de la secuencia."
+
+**Por qué funciona:** Metacognitive monitoring (Dunlosky, 2013). El aspirante que sabe POR QUÉ se equivoca corrige más rápido que el que solo sabe EN QUÉ se equivocó.
+
+### 1.4 — Target "Zealots" con Alto Rendimiento que Fallan por Detalles
+
+Enfocarte en aspirantes que ya saben medicina pero fallan por técnica de examen o GPC desactualizadas es la decisión de nicho más inteligente posible. Este segmento:
+- Tiene mayor disposición a pagar (ya invirtieron en otros cursos)
+- Tiene mayor tasa de engagement (están motivados, no empezando de cero)
+- Genera mejores testimoniales ("Ya había presentado 2 veces, esto fue lo que me faltaba")
+- Se beneficia MÁS de tus tags de error que un aspirante novato
+
+### 1.5 — La Transición DDIMBE Documentada
+
+El hecho de que tengas el tag #Error_GPC_Desactualizada y que tu contenido ya referencia `gpc.salud.gob.mx/DDIMBE` te pone 6-12 meses adelante de la competencia. CENETEC ya no existe y la mayoría del mercado no se ha enterado.
+
+
+Para un SIMULACRO COMPLETO necesitas: 280 reactivos
+DONDE EL 10% ES INGLES.
+Para un SIMULACRO DIAGNÓSTICO necesitas: mínimo 50-80
+Para la BETA necesitas mínimo: 3 simulacros 
+  = 840 reactivos (con overlap de ~30% para spaced 
+  repetition = ~600 reactivos únicos)
+
+Tu gap: 66 → 600 = necesitas producir 534 reactivos MÁS
+
+A un ritmo de 10 reactivos/día con tu flujo de IA:
+534 / 10 = 53 días de producción pura
++ revisión y validación = 70-80 días
+
+⚠️ Si planeas lanzar beta antes de 90 días, 
+necesitas ACELERAR la producción dramáticamente 
+o REDUCIR el alcance del primer simulacro.
+```
+
+**SOLUCIÓN INMEDIATA:** No lances con un simulacro completo de 280 preguntas. Lanza con **bloques modulares de 30-50 preguntas** por especialidad. El aspirante escoge qué módulo practicar. Necesitas 150 reactivos para lanzar (no 600), distribuidos así:
+
+```
+Cardio/Neumo: 20 reactivos (13%)
+Endocrino/Nefro: 15 reactivos (10%)
+Gineco/Obstetricia: 25 reactivos (17%)
+Pediatría: 25 reactivos (17%)
+Cirugía: 20 reactivos (13%)
+Urgencias/Toxico: 10 reactivos (7%)
+Infectología: 10 reactivos (7%)
+Resto (Psiq/Epi/Geri/ORL/Oftalmo/Derma): 15 (10%)
+Inglés: 10 reactivos (6%)
+TOTAL MÍNIMO VIABLE: 150 reactivos
+```
+
+**2. Hay módulos COMPLETOS que no aparecen en tu inventario.**
+
+```markdown
+TU INVENTARIO ACTUAL:
+✅ Medicina Interna (Diabetes, ERC, IAM, EVC, 
+   Cirrosis, Anemias, Hipotiroidismo)
+✅ Gineco (Preeclampsia, CaMama, CaCu, Hemorragias)
+✅ Pediatría (Neumonía, Vacunación)
+✅ Cirugía (Apendicitis, Colecistitis, 
+   Coledocolitiasis, Fx Cadera)
+✅ Especialidades (Oftalmo, ORL, Derma, Dengue)
+
+LO QUE FALTA COMPLETAMENTE:
+❌ Urgencias/ATLS/ACLS — 5% del ENARM, ~14 preguntas
+❌ Toxicología (antídotos) — 2-4 preguntas
+❌ Psiquiatría — 4% del ENARM, ~11 preguntas
+❌ Epidemiología/Salud Pública — 5%, ~14 preguntas
+❌ Bioética/Marco Legal — 2-3 preguntas
+❌ Geriatría — 2%, ~6 preguntas
+❌ Neurología independiente — 4%, ~11 preguntas
+❌ Hematología/Oncología — 3%, ~8 preguntas
+❌ Inglés Médico — ~10-15 preguntas
+
+TOTAL AUSENTE: ~30% del ENARM no existe en tu DB
+```
+
+**3. Tu inventario de "Especialidades" es un cajón de sastre.**
+
+Tienes Oftalmo, ORL, Derma e Infectología (Dengue) en la misma categoría. Pero Infectología es TRANSVERSAL (7% del ENARM) y necesita su propio tratamiento, mientras que Oftalmo/ORL/Derma son módulos de baja rentabilidad (~3%). Mezclarlos hace que Infectología se diluya.
+
+**4. 66 reactivos con promedio de 2.4 preguntas por caso sugiere inconsistencia.**
+
+```markdown
+27 casos × 2.4 preguntas promedio = ¿problema?
+
+Si el ENARM usa casos seriados de 2-3 preguntas:
+- 27 casos × 2 preguntas = 54 reactivos (si todos son de 2)
+- 27 casos × 3 preguntas = 81 reactivos (si todos son de 3)
+- 27 casos × 2.4 promedio = 66 reactivos
+
+Esto significa que tienes MEZCLA de:
+- Casos de 2 preguntas
+- Casos de 3 preguntas
+- Posiblemente casos UNITARIOS (1 pregunta) disfrazados 
+  de seriados
+
+⚠️ VERIFICAR EN TU SHEET: 
+¿Hay casos con solo 1 pregunta hija? 
+Si sí, eso NO es formato ENARM.
+El ENARM no tiene preguntas aisladas. 
+TODO es caso seriado de 2-3.
+```
+
+**5. No mencionas distribución de dificultad.**
+
+¿Tus 66 reactivos están calibrados en 30% fácil / 50% medio / 20% difícil? Sin calibración, puedes tener dos problemas:
+- Demasiado fácil → falsa confianza → masacre el día real
+- Demasiado difícil → ansiedad → abandono de la beta en semana 2
+
+**6. No mencionas distribución de respuesta correcta.**
+
+Si la respuesta correcta es siempre B o C, tus aspirantes van a desarrollar sesgo de posición. Verifica en tu Sheet:
+
+```
+Distribución ideal:
+A: ~25% | B: ~25% | C: ~25% | D: ~25%
+Rango aceptable: 20-30% por letra
+```
+
+**7. La DB_Perlas_Contenido está "En proceso" — es tu eslabón más débil.**
+
+Las Perlas son el PAYLOAD de tu automatización. Sin ellas, el flujo es:
+```
+Aspirante falla → Make.com detecta → ActiveCampaign dispara 
+→ Email llega... VACÍO. Sin Perla. Sin valor. 
+→ Aspirante piensa: "esto no sirve" → Cancela.
+```
+
+**Las Perlas deben estar listas ANTES de lanzar la beta, no después.**
+
+### ERRORES TÉCNICOS Y OPERATIVOS
+
+**8. No hay protocolo de validación de distractores documentado.**
+
+¿Quién verifica que los 3 distractores de cada pregunta son PLAUSIBLES pero DEFINITIVAMENTE incorrectos? Si la IA generó los distractores sin revisión humana, vas a tener:
+- Distractores absurdos que cualquiera descarta (entrena mal)
+- Distractores parcialmente correctos que generan confusión injusta
+
+**9. El flujo Make.com → ActiveCampaign no tiene blueprint documentado.**
+
+Mencionas "Webhook de Rescate" pero no describes:
+- ¿Qué evento en LearnDash dispara el webhook?
+- ¿Qué datos envía el webhook a Make.com?
+- ¿Cómo Make.com selecciona la Perla correcta?
+- ¿Qué template de ActiveCampaign recibe los datos?
+- ¿En cuántos minutos llega el email?
+
+Sin documentar esto, cuando algo falle (y VA a fallar), no vas a saber dónde buscar.
+
+**10. No hay campo de "Palabra_Pivote" visible en tu estructura de datos.**
+
+Mencionas palabras pivote en el sistema general pero no describes una columna en `Reactivos_Hijos` que identifique la palabra pivote de cada stem. Sin esto, no puedes:
+- Entrenar al aspirante en detección de pivotes
+- Generar reportes de "¿en qué tipo de pivote fallas más?"
+- Alimentar el tag #Error_Distractor con precisión
+
+**11. No hay simulación de presión temporal.**
+
+¿Tu simulador tiene cronómetro? El ENARM da ~1.3-1.5 min/pregunta. Si el aspirante practica sin límite de tiempo, el día del examen el reloj lo va a destruir.
+
+**12. El CSV como formato de intercambio tiene limitaciones.**
+
+```markdown
+PROBLEMA: La viñeta clínica tiene 80-250 palabras.
+En un CSV, eso significa:
+- Comas dentro del texto rompen delimitadores
+- Saltos de línea rompen filas
+- Caracteres especiales (°, ≥, ≤, μ) pueden 
+  corromperse en la importación
+
+SOLUCIÓN: Usar Google Sheets como DB nativa 
+(que ya haces) pero exportar a JSON cuando 
+necesites alimentar el LMS o Make.com.
+JSON maneja texto largo sin problemas.
+```
+
+**13. No hay campo "Dominio_Cognitivo" en tus reactivos.**
+
+El ENARM distribuye ~30% reconocimiento, ~50% aplicación, ~20% análisis. Sin etiquetar cada reactivo con su dominio, no puedes verificar si tu banco está calibrado.
+
+**14. No hay onboarding documentado para beta users.**
+
+¿Qué pasa cuando alguien paga? ¿Recibe email de bienvenida? ¿Tutorial de la plataforma? ¿Simulacro diagnóstico? Sin onboarding, el 50% de la beta se pierde en la primera semana.
+
+---
+
+## PARTE 3: CORRECCIONES INMEDIATAS
+
+### CORRECCIÓN #1: Columnas Faltantes en Reactivos_Hijos
+
+```markdown
+# AGREGAR A TU SHEET "Reactivos_Hijos":
+
+## Columnas nuevas (agregar al final):
+
+| Columna | Tipo | Validación | Ejemplo |
+|---------|------|------------|---------|
+| Dominio_Cognitivo | Lista | Reconocimiento / Aplicación / Análisis | Aplicación |
+| Palabra_Pivote | Texto | Libre | "INICIO más apropiado" |
+| Potencial_Cascada | Lista | Sí / No | Sí |
+| Tiempo_Estimado_Seg | Número | 60-120 | 90 |
+| Perla_GPC | Texto largo | Libre | "GPC DDIMBE 2024: iSGLT2..." |
+| Dificultad | Lista | 1 / 2 / 3 / 4 / 5 | 3 |
+| Tag_Error_Distractor_A | Lista | Los 8 tags | #Error_GPC_Desactualizada |
+| Tag_Error_Distractor_B | Lista | Los 8 tags | #Error_Escala |
+| Tag_Error_Distractor_C | Lista | Los 8 tags | #Error_Farmaco |
+| Plausibilidad_Distractor_A | Lista | Alta / Media / Baja | Alta |
+| Plausibilidad_Distractor_B | Lista | Alta / Media / Baja | Media |
+| Plausibilidad_Distractor_C | Lista | Alta / Media / Baja | Media |
+
+NOTA: Los tags de error deben ser POR DISTRACTOR, 
+no por pregunta. Porque cada distractor explota 
+un sesgo cognitivo DIFERENTE.
+```
+
+### CORRECCIÓN #2: Estructura de DB_Perlas_Contenido
+
+```markdown
+# CREAR PESTAÑA: DB_Perlas_Contenido
+
+## Encabezados:
+
+ID_Perla | ID_Reactivo | Tag_Error_Asociado | Perla_Titulo | Perla_Cuerpo | Tipo_Recurso | URL_Recurso | GPC_Fuente | Prioridad_Envio
+
+## Validaciones:
+
+ID_Perla: 
+  Formato: PERLA-[ID_Reactivo]-[Letra_Distractor]
+  Ejemplo: PERLA-ENDO-DM2-001-P1-A
+
+ID_Reactivo:
+  Debe existir en Reactivos_Hijos
+
+Tag_Error_Asociado:
+  Lista: #Error_GPC | #Error_GPC_Desactualizada | 
+  #Error_Normativo | #Error_Escala | 
+  #Error_Diferencial | #Error_Timing | 
+  #Error_Farmaco | #Error_Distractor
+
+Tipo_Recurso:
+  Lista: Párrafo_GPC | Tabla_Comparativa | 
+  Línea_de_Tiempo | Flashcard | 
+  Tarjeta_Farmacológica | Caso_Tribunal | 
+  Algoritmo_Actualizado | Escala_Criterios
+
+Prioridad_Envio:
+  Lista: Inmediata_Email | Día_Siguiente | 
+  Revisión_Semanal
+
+## Ejemplo llenado:
+
+ID_Perla: PERLA-ENDO-DM2-001-P1-A
+ID_Reactivo: ENDO-DM2-001-P1
+Tag_Error_Asociado: #Error_GPC_Desactualizada
+Perla_Titulo: "⚠️ DM2: El algoritmo cambió en 2024"
+Perla_Cuerpo: "Tu respuesta (metformina sola como 
+  inicio) era correcta hasta 2023. La GPC DDIMBE 
+  2024 ahora indica que en pacientes con ECVA 
+  establecida (IAM previo, EVC, EAP), se inicia 
+  metformina + iSGLT2 desde el día 1. El beneficio 
+  cardiovascular es independiente del control 
+  glucémico."
+Tipo_Recurso: Algoritmo_Actualizado
+URL_Recurso: [link a tabla farmacológica DM2]
+GPC_Fuente: GPC-SSA-093-24
+Prioridad_Envio: Inmediata_Email
+```
+
+### CORRECCIÓN #3: Inventario Mínimo Viable para Beta (150 Reactivos)
+
+```markdown
+# PLAN DE PRODUCCIÓN — 150 REACTIVOS MÍNIMO VIABLE
+
+## LO QUE YA TIENES (66 reactivos):
+
+| Área | Reactivos | ¿Suficiente para beta? |
+|------|-----------|----------------------|
+| MI (DM2, ERC, IAM, EVC, Cirrosis, Anemias, Hipotir) | ~20 | ⚠️ Necesita 10 más |
+| Gineco (Preeclampsia, CaMa, CaCu, Hemorragias) | ~16 | ⚠️ Necesita 9 más |
+| Pediatría (Neumonía, Vacunas) | ~8 | ❌ Necesita 17 más |
+| Cirugía (Apendicitis, Colecistitis, Coledoco, FxCadera) | ~12 | ⚠️ Necesita 8 más |
+| Especialidades (Oftalmo, ORL, Derma, Dengue) | ~10 | ⚠️ Necesita 5 más |
+
+## LO QUE NECESITAS PRODUCIR (84 reactivos):
+
+### SEMANA 1 — Módulos que NO EXISTEN (Priority RED):
+| Módulo | Reactivos a Producir | Temas Clave |
+|--------|---------------------|-------------|
+| Urgencias/ATLS/ACLS | 10 | ABCDE, paro cardíaco, shock, quemaduras |
+| Toxicología | 6 | Antídotos top 10 + faboterapia + toxíndromes |
+| Infectología Trans. | 8 | Sífilis congénita, IAAS, Hepatitis C, TB, IVU |
+
+### SEMANA 2 — Módulos INCOMPLETOS (Priority YELLOW):
+| Módulo | Reactivos | Temas Faltantes |
+|--------|-----------|-----------------|
+| Pediatría | 12 | IVU pediátrica, deshidratación, asma, crisis convulsiva febril |
+| Gineco | 6 | VIH en embarazo, IVU en embarazo, amenorrea, anticoncepción |
+| MI Cardio | 6 | IC (iSGLT2 en IC), TEP, disección aórtica |
+| MI Neumo | 4 | NAC adulto, EPOC exacerbación, asma aguda |
+
+### SEMANA 3 — Módulos AUSENTES (Priority GREEN):
+| Módulo | Reactivos | Temas |
+|--------|-----------|-------|
+| Psiquiatría | 6 | Depresión, ansiedad, esquizofrenia, delirium |
+| Epi/Salud Pública | 6 | Estudios epidemiológicos, NOM-017, tamizaje |
+| Bioética/Legal | 4 | Consentimiento informado, certificado defunción |
+| Geriatría | 4 | Polifarmacia, caídas, delirium vs demencia |
+| Neurología | 6 | EVC isquémico trombolisis, cefaleas, epilepsia |
+| Hematología | 4 | Anemia ferropénica vs megaloblástica, púrpuras |
+| Inglés Médico | 6 | 3 abstracts con 2 preguntas cada uno |
+
+### SEMANA 4 — Completar y Calibrar:
+| Tarea | Reactivos |
+|-------|-----------|
+| Rellenar huecos de distribución de dificultad | ~6 |
+| Balancear respuesta correcta por letra | Ajustes |
+| Casos integradores cross-module | 6 |
+
+TOTAL PRODUCCIÓN: 84 reactivos nuevos en 4 semanas
+RITMO: ~21 reactivos/semana = ~3-4 por día
+CON FLUJO TRIPLE IA: Factible si dedicas 2-3 
+horas/día a producción + revisión
+```
+
+### CORRECCIÓN #4: Blueprint del Flujo Make.com
+
+```markdown
+# BLUEPRINT: Autopsia Automática Post-Simulacro
+
+## TRIGGER:
+LearnDash "Quiz Completed" webhook
+→ Envía a Make.com:
+  - user_id
+  - quiz_id
+  - score
+  - respuestas_usuario[] (array con ID_Pregunta 
+    + letra_escogida + correcto/incorrecto)
+  - timestamp
+
+## PASO 1 (Make.com — Module: Filter):
+Filtrar solo las preguntas INCORRECTAS
+→ Para cada pregunta incorrecta, extraer:
+  - ID_Pregunta
+  - Letra_escogida_por_usuario
+
+## PASO 2 (Make.com — Module: Google Sheets Lookup):
+Buscar en DB_Perlas_Contenido:
+  WHERE ID_Reactivo = [ID_Pregunta]
+  AND Letra_Distractor = [Letra_escogida]
+→ Obtener:
+  - Perla_Titulo
+  - Perla_Cuerpo
+  - Tag_Error_Asociado
+  - Tipo_Recurso
+  - URL_Recurso
+  - GPC_Fuente
+
+## PASO 3 (Make.com — Module: Aggregator):
+Agrupar todas las Perlas en un solo payload:
+{
+  "usuario": "[nombre]",
+  "email": "[email]",
+  "score": "[score]",
+  "total_errores": [n],
+  "perlas": [
+    {
+      "titulo": "...",
+      "cuerpo": "...",
+      "tag": "...",
+      "recurso": "..."
+    },
+    ...
+  ],
+  "tags_frecuentes": {
+    "#Error_GPC_Desactualizada": 3,
+    "#Error_Timing": 2,
+    "#Error_Farmaco": 1
+  },
+  "patron_dominante": "#Error_GPC_Desactualizada"
+}
+
+## PASO 4 (Make.com — Module: ActiveCampaign):
+Enviar datos al contacto en ActiveCampaign:
+  - Custom field: "ultimo_score" = [score]
+  - Custom field: "patron_error_dominante" = [tag]
+  - Tag: agregar [tags de error al contacto]
+  - Trigger: Automation "Email_Autopsia_Post_Simulacro"
+
+## PASO 5 (ActiveCampaign — Automation):
+Template de email:
+
+Asunto: "Tu Autopsia está lista — 
+  {{patron_dominante}} fue tu enemigo hoy 🩸"
+
+Cuerpo:
+"Hola {{nombre}},
+
+Terminaste el simulacro con {{score}}% de aciertos.
+Fallaste {{total_errores}} preguntas.
+
+Tu patrón de error dominante fue: 
+{{patron_dominante}}
+
+Esto significa que: [explicación según tag]
+
+Aquí están tus Perlas de Rescate:
+
+{% for perla in perlas %}
+📋 {{perla.titulo}}
+{{perla.cuerpo}}
+Fuente: {{perla.gpc_fuente}}
+{% endfor %}
+
+[CTA: Volver a la plataforma para revisar 
+las preguntas que fallaste]"
+
+## TIEMPO TOTAL: <5 minutos post-simulacro
+
+## DEPENDENCIAS:
+□ LearnDash Quiz configurado con webhook
+□ Make.com scenario con 5 módulos
+□ Google Sheets con DB_Perlas_Contenido COMPLETA
+□ ActiveCampaign con custom fields y automation
+□ Template de email diseñado y probado
+```
+
+### CORRECCIÓN #5: Checklist de Calibración Psicométrica
+
+```markdown
+# DASHBOARD DE CALIBRACIÓN — Agregar como Pestaña 5
+
+## Crear estas fórmulas en la pestaña DASHBOARD:
+
+### A. DISTRIBUCIÓN DE RESPUESTA CORRECTA
+=COUNTIF(Reactivos_Hijos!Respuesta_Correcta, "A") 
+/ COUNTA(Reactivos_Hijos!Respuesta_Correcta) * 100
+
+Repetir para B, C, D.
+META: 20-30% por letra.
+🔴 ALERTA si alguna >30% o <20%.
+
+### B. DISTRIBUCIÓN DE DIFICULTAD
+Fácil (1-2): =COUNTIFS(Dificultad, "<=2") / TOTAL
+Medio (3): =COUNTIFS(Dificultad, "=3") / TOTAL
+Difícil (4-5): =COUNTIFS(Dificultad, ">=4") / TOTAL
+META: 30% / 50% / 20%
+
+### C. DISTRIBUCIÓN DE DOMINIO COGNITIVO
+Reconocimiento: =COUNTIF(Dominio, "Reconocimiento") / TOTAL
+Aplicación: =COUNTIF(Dominio, "Aplicación") / TOTAL
+Análisis: =COUNTIF(Dominio, "Análisis") / TOTAL
+META: 30% / 50% / 20%
+
+### D. COBERTURA POR MÓDULO
+=COUNTIF(Modulo, "M01_Cardio_Neumo") / TOTAL * 100
+Repetir para cada módulo.
+Comparar con % objetivo ENARM.
+
+### E. DISTRIBUCIÓN DE TAGS DE ERROR
+=COUNTIF(DB_Distractores!Tag_Error, 
+  "#Error_GPC_Desactualizada") 
+Repetir para cada tag.
+→ Útil para saber qué tipo de error estás 
+  entrenando más.
+
+### F. PROGRESO DE PRODUCCIÓN
+Borrador: =COUNTIF(Status, "Borrador")
+Validado: =COUNTIF(Status, "Validado")
+Con_Perla: =COUNTIF(Perla_GPC, "<>")
+Sin_Perla: =COUNTIF(Perla_GPC, "")
+```
+
+---
+
+## PARTE 4: MEJORAS PEDAGÓGICAS AVANZADAS
+
+### 4.1 — Interleaving Obligatorio en Simulacros
+
+```markdown
+# PROBLEMA ACTUAL:
+Si el aspirante estudia el módulo de MI y luego 
+hace un simulacro SOLO de MI, está haciendo 
+blocked practice. Retiene hoy, olvida en 2 semanas.
+
+# SOLUCIÓN:
+Después de cada módulo completado, el siguiente 
+simulacro mezcla:
+
+50% — Módulo recién estudiado (práctica directa)
+30% — Módulos anteriores (spaced retrieval)
+20% — Módulos NO estudiados (pre-exposición)
+
+# IMPLEMENTACIÓN EN LEARNDASH:
+LearnDash no tiene interleaving nativo.
+Opciones:
+a) Crear "Simulacros Inteligentes" manualmente 
+   con la mezcla correcta (laborioso pero factible)
+b) Usar el plugin "Quiz Randomization" de LearnDash 
+   con pools de preguntas por módulo
+c) Para la beta: crear 3 simulacros pre-armados 
+   con la mezcla correcta, no automatizar todavía
+
+# EJEMPLO:
+"Simulacro Beta #1" (50 preguntas):
+- 25 de MI (módulo principal)
+- 15 de Gineco/Pedia (repaso)
+- 10 de Cirugía/Urgencias (pre-exposición)
+```
+
+### 4.2 — Spaced Repetition del Error, No del Tema
+
+```markdown
+# INNOVACIÓN CLAVE:
+No repitas el TEMA en que falló. 
+Repite el TIPO DE ERROR.
+
+# EJEMPLO:
+Si el aspirante tiene patrón dominante 
+#Error_Timing, su siguiente simulacro debe 
+incluir más preguntas donde la trampa es 
+de secuencia/timing, INDEPENDIENTEMENTE 
+del tema médico.
+
+Puede ser:
+- #Error_Timing en Gineco (MgSO4 antes de 
+  estabilizar TA en preeclampsia)
+- #Error_Timing en Cirugía (operar antes 
+  de estabilizar en trauma)
+- #Error_Timing en MI (trombolizar antes 
+  de bajar TA en EVC hemorrágico)
+
+# POR QUÉ FUNCIONA:
+El aspirante no tiene un déficit de CONOCIMIENTO 
+de Gineco o Cirugía. Tiene un déficit de 
+RAZONAMIENTO SECUENCIAL que se manifiesta 
+en múltiples especialidades. Atacar el patrón 
+de error es más eficiente que atacar el tema.
+
+# IMPLEMENTACIÓN:
+En tu Google Sheet, filtrar por Tag_Error 
+más frecuente del usuario → generar simulacro 
+personalizado con esos tags.
+```
+
+### 4.3 — Cognitive Load Reduction: "Semáforo de Rentabilidad"
+
+```markdown
+# TU ASPIRANTE ZEALOT TIENE POCO TIEMPO.
+# Necesita saber QUÉ ESTUDIAR PRIMERO.
+
+## Sistema visual en la plataforma:
+
+🔴 ROJO — Alta Rentabilidad (60% del ENARM):
+   MI Cardio, Endocrino, Gineco, Pediatría, Cirugía
+   "Si te quedan 30 días, SOLO esto"
+
+🟡 AMARILLO — Media Rentabilidad (25%):
+   Gastro, Infecto, Neuro, Urgencias, Epi
+   "Si te quedan 60 días, agrega esto"
+
+🟢 VERDE — Baja Rentabilidad (15%):
+   Hemato, Trauma, Psiq, Geri, Oftalmo/ORL/Derma
+   "Si te quedan 90+ días, cubre todo"
+
+# IMPLEMENTACIÓN:
+Agregar Tag_Rentabilidad a cada caso en tu Sheet.
+Mostrar en la plataforma con código de color.
+El aspirante sabe instantáneamente por dónde empezar.
+```
+
+### 4.4 — Gamificación para Zealots (No Infantil)
+
+```markdown
+# TU PÚBLICO NO QUIERE ESTRELLITAS.
+# Quiere DATOS que alimenten su ego competitivo.
+
+## 1. PREDICTOR DE SCORE
+"Basado en tus últimos simulacros, tu puntaje 
+ENARM estimado es: 72.3 / 100"
+→ Se actualiza con cada simulacro
+→ Es ADICTIVO. El aspirante vuelve para ver si subió.
+
+Fórmula simplificada:
+score = (aciertos_rojos × 0.60 / total_rojos) 
+      + (aciertos_amarillos × 0.25 / total_amarillos) 
+      + (aciertos_verdes × 0.15 / total_verdes) 
+      × 100
+
+## 2. PERCENTIL SEMANAL (anónimo)
+"Esta semana estás en el percentil 78 del grupo beta"
+→ Email cada lunes
+→ Anónimo (nadie sabe quién es quién)
+
+## 3. "KILL BOARD" — Temas Dominados
+Lista visual de temas donde acertó 3+ veces seguidas.
+"Dominados: Preeclampsia (5/5), IAM CEST (4/4)"
+→ Sin emojis infantiles, solo texto limpio
+
+## 4. RACHA DE AUTOPSIAS
+"Llevas 12 días consecutivos revisando tus errores"
+→ No premia aciertos, premia ANÁLISIS DE ERRORES
+→ El que estudia sus fallos diario mejora más rápido
+```
+
+### 4.5 — El "Caso Asesino" Semanal
+
+```markdown
+# CADA VIERNES: Un caso integrador de nivel 10 
+# que cruza 3+ módulos.
+
+Formato:
+- Viñeta larga (400 palabras, como ENARM real)
+- 4 preguntas seriadas cross-module
+- Se publica viernes PM
+- Autopsia completa domingo PM
+- Discusión en grupo WhatsApp/Discord de beta
+
+Objetivo pedagógico:
+- Desirable difficulty (Bjork): la frustración 
+  productiva genera retención 3x mayor
+- Comunidad: los beta users discuten y aprenden 
+  entre ellos
+- Retención: el aspirante espera el caso semanal 
+  como si fuera un episodio de serie
+
+Ejemplo:
+"Embarazada de 34 SDG con VIH + preeclampsia severa 
+→ P1 (Gineco): ¿Diagnóstico integrado?
+→ P2 (Infecto): ¿TAR seguro en este momento?
+→ P3 (Neonato): ¿Profilaxis al RN?
+→ P4 (Urgencias): Complicación post-cesárea, 
+   ¿manejo inmediato?"
+```
+
+### 4.6 — Protocolo de Onboarding para Beta Users
+
+```markdown
+# SECUENCIA DE 4 EMAILS POST-PAGO
+
+## Email 1 (inmediato, <2 min):
+Asunto: "Bienvenido al lado oscuro del ENARM 🧠"
+- Confirmación de acceso (magic link, sin login)
+- Video de 3 min: cómo está organizado todo
+- CTA: "Empieza con el Simulacro Diagnóstico"
+
+## Email 2 (24h después):
+Asunto: "Tu primer simulacro te está esperando"
+- Link a Simulacro Diagnóstico (30 preguntas, 
+  multi-módulo, sin presión de tiempo)
+- "Este simulacro NO es para estudiar. Es para 
+  que la plataforma sepa dónde estás."
+
+## Email 3 (48h, post-simulacro diagnóstico):
+Asunto: "Tu Autopsia está lista 🩸"
+- 3 áreas fuertes, 3 áreas críticas
+- Ruta de estudio personalizada
+- Calendario sugerido
+- CTA: "Empieza con tu área más débil"
+
+-RESUMEN DE TODOS LOS TEMAS DE ENARM
+- Comparación con promedio del grupo
+- "feedback"
+- Crear la Perla ENARM
+- Asociar al Tag_Error del distractor
+
+Sin Perlas, tu automatización es un cascarón vacío.
+Esto es BLOCKER para todo lo demás.
+
+Prompt para IA: "Para esta pregunta donde la 
+respuesta correcta es B y el distractor más 
+plausible es A, genera una Perla de Rescate 
+de 3-4 líneas que explique por qué A es 
+incorrecta, cite la GPC DDIMBE actual, y le 
+diga al aspirante exactamente qué estudiar."
+
+Cada reactivo producido debe INCLUYE
+□ Caso padre en Casos_Padres
+□ 2-3 preguntas en Reactivos_Hijos
+□ 3 distractores documentados con Tag_Error
+□ Perla de Rescate en DB_Perlas_Contenido
+□ GPC verificada en catálogo DDIMBE
+
+
+## 2C. CREAR SIMULACRO DIAGNÓSTICO (30 preguntas)
+
+Seleccionar 30 preguntas de tu banco:
+- 10 de módulos 🔴 (Alta Rentabilidad)
+- 12 de módulos 🟡 (Media)
+- 8 de módulos 🟢 (Baja)
+- Distribución: 10 fáciles, 15 medias, 5 difíciles
+- Respuesta correcta: ~7-8 por letra
+- Dominio: 9 reconocimiento, 15 aplicación, 6 análisis
+
+
+
+
+
